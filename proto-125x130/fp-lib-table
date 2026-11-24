@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "DensityMidi")(type "KiCad")(uri "${KIPRJMOD}/DensityMidi.pretty")(options "")(descr "Density MIDI project footprints"))
+)

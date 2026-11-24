@@ -1,0 +1,16 @@
+.DS_Store
+# KiCad local state and backups
+*.kicad_prl
+*.lck
+*-backups/
+fp-info-cache
+_autosave-*
+# KiCad user-documents folder used by the command line tools
+kicad-user/
+# Vendor downloads (Alps CAD package with its own terms)
+datasheets/
+__pycache__/
+*.pyc
+# Skill package is kept local
+pcb-for-assembly-skill/
+pcb-for-assembly-skill.zip
