@@ -1,0 +1,18 @@
+; SK6812 / WS2812 output, 800 kHz, 10 PIO cycles per bit (PIO clock 8 MHz, 125 ns per cycle).
+; 0 bit: high 375 ns, low 875 ns. 1 bit: high 625 ns, low 625 ns. SK6812MINI datasheet:
+; T0H 0.3 us, T1H 0.6 us, T0L 0.9 us, T1L 0.6 us, each +-0.15 us.
+; The build (platform _build_pioasm.py) regenerates sk6812.pio.h when this file is newer.
+.program sk6812
+.side_set 1
+.define public T1 3
+.define public T2 2
+.define public T3 5
+.wrap_target
+bitloop:
+    out x, 1       side 0 [T3 - 1]
+    jmp !x do_zero side 1 [T1 - 1]
+do_one:
+    jmp  bitloop   side 1 [T2 - 1]
+do_zero:
+    nop            side 0 [T2 - 1]
+.wrap

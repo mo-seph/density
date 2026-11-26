@@ -1,0 +1,61 @@
+{
+  "name": "Density proto",
+  "midi_channel": 1,
+  "led_brightness": 0.5,
+  "pickup_tolerance": 0.03,
+
+  "banks": [
+    { "name": "Mix",   "hue": 120 },
+    { "name": "Sends", "hue": 180 },
+    { "name": "FX",    "hue": 280 },
+    { "name": "Perf",  "hue": 30 }
+  ],
+
+  "filter": {
+    "knob":  { "smoothing": 0.2, "deadband": 0.006, "settle_ms": 300 },
+    "fader": { "smoothing": 0.2, "deadband": 0.006, "settle_ms": 300 },
+    "pedal": { "smoothing": 0.1, "deadband": 0.01,  "settle_ms": 300 }
+  },
+
+  "groups": [
+    {
+      "name": "knobs",
+      "controls": "knob1-16",
+      "send": { "type": "cc", "first": 16, "bank_offset": 16 },
+      "pickup": "pickup",
+      "led": { "mode": "level", "hue": "bank" }
+    },
+    {
+      "name": "knob buttons",
+      "pads": "pad1-16",
+      "action": "toggle",
+      "send": { "type": "note", "first": 36, "bank_offset": 16 }
+    },
+    {
+      "name": "fader",
+      "controls": "fader1",
+      "shared": true,
+      "send": { "type": "cc", "first": 7 }
+    },
+    {
+      "name": "pedals",
+      "controls": "pedal1-2",
+      "shared": true,
+      "pickup": "jump",
+      "send": { "type": "cc", "first": 11 }
+    },
+    {
+      "name": "bank buttons",
+      "pads": "pad17-20",
+      "action": "bank_select",
+      "first_bank": 1,
+      "led": { "mode": "state", "hue": "bank" }
+    },
+    {
+      "name": "perf bank: first row shows fixed magenta, slow fade",
+      "banks": [4],
+      "pads": "pad1-4",
+      "led": { "mode": "static", "hue": 300, "sat": 1.0, "val": 0.8, "effect": "fade", "period_ms": 1500 }
+    }
+  ]
+}

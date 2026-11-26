@@ -1,0 +1,5 @@
+{
+  "name": "density-core",
+  "version": "0.1.0",
+  "build": { "flags": ["-std=gnu++17"], "includeDir": "include", "srcDir": "src" }
+}
